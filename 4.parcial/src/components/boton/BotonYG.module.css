@@ -1,0 +1,27 @@
+.container {
+    width: 50%;
+    text-align: center;
+}
+
+.boton {
+    text-align: center;
+    min-width: 200px;
+    min-height: 100px;
+    width: 100%;
+    padding: 30px;
+    background-color: #FFF;
+    border: 1px solid #2424FF;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.boton:hover {
+    background-color: #D3D4D5;
+    border: 1px solid #D3D4D5;
+    cursor: pointer;
+}
+
+.botonFail {
+    background-color: #BB2D3B;
+    border: 1px solid #BB2D3B;
+}

@@ -1,0 +1,35 @@
+.list {
+    display: flex;
+    padding: 10px;
+    border: 1px solid #DDD;
+    width: 94%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -1px;
+}
+
+.icon {
+    padding: 0px 5px 0px 5px;
+    cursor: pointer;
+}
+
+.name {
+    width: 50%;
+    padding-left: 5px;
+}
+
+.type {
+    color: #FFF;
+    padding: 3px;
+    border-radius: 15px;
+    width: 31%;
+    text-align: center;
+}
+
+.spent {
+    background-color: rgb(245, 54, 54);
+}
+
+.income {
+    background-color: #08d378;
+}

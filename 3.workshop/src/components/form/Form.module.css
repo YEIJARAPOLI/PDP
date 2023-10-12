@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.span {
+    width: 45%;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.select {
+    width: 100%;
+    padding: 10px;
+}
+
+.input {
+    width: 94%;
+    padding: 8px;
+}
+
+.select_wrapper {
+    position: relative;
+    width: 55%;
+}
+
+.select_wrapper select {
+    padding-left: 15px;
+    text-align: center;
+}
+
+.input_wrapper {
+    position: relative;
+    margin-left: -13px;
+}
+
+.input_wrapper input {
+    text-align: center;
+}
+
+.input_icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 27%;
+    left: 5px;
+}
+
+.container button {
+    margin-top: 20px;
+    padding: 6px 15px 6px 15px;
+}
+
+.container .primary {
+    background-color: #0B5ED7;
+    border-radius: 5px;
+    border: 1px solid #0B5ED7;
+    color: #fff;
+    cursor: pointer;
+}
+
+.container .secundary {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #000;
+    margin-right: 10px;
+    cursor: pointer;
+}

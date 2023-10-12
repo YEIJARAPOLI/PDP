@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.question {
+    border: 1px solid #2424FF;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}

@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.appwrapper {
+  width: 850px;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 3px 6px 40px #000;
+  margin-bottom: 10px;
+}
+
+.body {
+  display: flex;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.form {
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.form .containerDetail {
+  width: 100%;
+}
+
+.form .containerDetail .formContainer {
+  margin: 15px;
+}
+
+.form .header {
+  width: 100%;
+  background-color: #DDD;
+  border-radius: 10px 10px 0px 0px;
+  padding: 6px 0px 6px 0px;
+  margin-bottom: 10px;
+}
+
+.form .header span {
+  padding-left: 6px;
+  width: 100%;
+}
+
+.margin {
+  margin-left: 15px;
+  width: 50%;
+}
+
+.margin .form {
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.badge {
+  background-color: #0B5ED7;
+  color: #fff;
+  right: 20%;
+  position: absolute;
+  width: 14px !important;
+  padding: 3px 10px 3px 15px !important;
+  border-radius: 10px;
+  font-weight: 600;
+  top: 141px;
+}

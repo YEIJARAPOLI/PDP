@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.radioContainer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.input_wrapper {
+    position: relative;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.input_wrapper input {
+    text-align: center;
+    padding: 5px;
+    border-radius: 15px 15px 15px 15px;
+    border: 1px solid #000;
+}
+
+.input_icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20%;
+    left: 5px;
+}

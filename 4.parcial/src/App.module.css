@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.appwrapper {
+  max-width: 1000px;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 3px 6px 40px #000;
+  margin-bottom: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.botonSuccess {
+  width: 100%;
+  padding: 30px;
+  font-size: 30px;
+  background-color: #198754;
+  border: 1px solid #198754;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.botonFail {
+  width: 100%;
+  padding: 30px;
+  font-size: 30px;
+  background-color: #BB2D3B;
+  border: 1px solid #BB2D3B;
+  color: #FFF;
+  cursor: pointer;
+}

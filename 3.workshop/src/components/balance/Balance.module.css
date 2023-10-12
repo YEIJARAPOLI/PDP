@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    background-color: #DDD;
+    margin-bottom: 30px;
+    justify-content: right;
+    align-items: center;
+    text-align: center;
+}
+
+.balance {
+    width: 25%;
+    margin-right: 5px;
+}
+
+.balance input {
+    width: 100%;
+}
+
+.input_wrapper {
+    position: relative;
+}
+
+.input_wrapper input {
+    padding-left: 15px;
+    width: 78%;
+    text-align: center;
+}
+
+.input_icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 14%;
+    left: 8px;
+}
+
+.form_group {
+    grid-gap: 0.5em;
+    display: grid;
+    width: min(100%, 40ch);
+}
