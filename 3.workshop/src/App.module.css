@@ -12,6 +12,7 @@
   border-radius: 10px;
   box-shadow: 3px 6px 40px #000;
   margin-bottom: 10px;
+  margin-top: 25px;
 }
 
 .body {
@@ -46,7 +47,6 @@
 
 .form .header span {
   padding-left: 6px;
-  width: 100%;
 }
 
 .margin {
@@ -66,8 +66,8 @@
   right: 20%;
   position: absolute;
   width: 14px !important;
-  padding: 3px 10px 3px 15px !important;
+  padding: 3px 21px 3px 15px !important;
   border-radius: 10px;
   font-weight: 600;
-  top: 141px;
+  top: 158.5px;
 }

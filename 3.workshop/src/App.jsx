@@ -1,10 +1,14 @@
 /* eslint-disable no-unreachable */
 import { useEffect, useState } from 'react'
+
+//import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'bootstrap/dist/js/bootstrap.min.js'
 import style from './App.module.css'
 import Balance from './components/balance/Balance'
 import Form from './components/form/Form'
 import TransactionList from './components/transactionList/TransactionList'
 import Filter from './components/filter/Filter'
+import Alert from './components/alert/Alert'
 
 function App() {
 
@@ -70,6 +74,11 @@ function App() {
     setTransactionsFilter(transactionsFilter)
   }
 
+  // Variables de alertas
+  const [show, setShow] = useState(null)
+  const [variant, setVariant] = useState(null)
+  const [message, setMessage] = useState(null)
+
   useEffect(() => {
     setFinalBalance(initialBalance)
   }, [initialBalance])
@@ -94,7 +103,7 @@ function App() {
                   <span>Registro</span>
                 </div>
                 <div className={style.formContainer}>
-                  <Form form={form} setForm={setForm} transactions={transactions} setTransactions={setTransactions} edit={edit} setEdit={setEdit} />
+                  <Form form={form} setForm={setForm} finalBalance={finalBalance} transactions={transactions} setTransactions={setTransactions} edit={edit} setEdit={setEdit} setshow={setShow} setVariant={setVariant} setMessage={setMessage} />
                 </div>
               </div>
             </div>
@@ -110,13 +119,15 @@ function App() {
                 <div>
                   <Filter filter={filter} setFilter={setFilter} />
                 </div>
-                <div className={style.formContainer}>
-                  <TransactionList transactions={transactions} transactionsFilter={transactionsFilter} setTransactions={setTransactions} setEdit={setEdit} />
+                <div className={style.formContainer} style={{ width: '98%' }}>
+                  <TransactionList transactions={transactions} transactionsFilter={transactionsFilter} setTransactions={setTransactions} setEdit={setEdit} setshow={setShow} setVariant={setVariant} setMessage={setMessage} />
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <Alert show={show} setshow={setShow} variant={variant} message={message} />
       </div>
     </div>
   )

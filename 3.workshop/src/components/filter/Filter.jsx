@@ -33,15 +33,15 @@ const Filter = ({ filter, setFilter }) => {
             </div>
 
             <div className={style.radioContainer}>
-                <div>
+                <div style={{paddingLeft: '5px'}}>
                     <input type="radio" name="filter" id="all" value="all" checked={filter.all} onChange={(e) => changeRadio(e.target.value)} />
                     <label htmlFor="all">Todos</label>
                 </div>
-                <div>
+                <div style={{paddingLeft: '5px'}}>
                     <input type="radio" name="filter" id="income" value="income" checked={filter.income} onChange={(e) => changeRadio(e.target.value)} />
                     <label htmlFor="income">Ingreso</label>
                 </div>
-                <div>
+                <div style={{paddingLeft: '5px'}}>
                     <input type="radio" name="filter" id="spent" value="spent" checked={filter.spent} onChange={(e) => changeRadio(e.target.value)} />
                     <label htmlFor="spent">Gasto</label>
                 </div>
