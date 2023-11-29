@@ -143,29 +143,48 @@ const ParkingProvider = ({ children }) => {
     })
     const [clientInfo, setClientInfo] = useState([])
     const [cellsAvailable, setCellsAvailable] = useState([])
+    const [time, setTime] = useState(0)
 
     const handleClient = () => {
-        console.log(cell);
         if (cell.info.plate != null || cell.info.plate.length > 0) {
             setClientInfo(clients.filter((cli) => cli.plate == cell.info.plate))
-            setCell({ ...cell, type: (clients.filter((cli) => cli.plate == cell.info.plate)[0].vehicle) })
 
-            handleOpenModal()
+            if (clientInfo == null || clientInfo.length <= 0) {
+                setSeverity("error")
+                setMessage("La placa no se encuentra registrada")
+
+                handleClick()
+                return
+            } else {
+                if (cells.filter((cl) => cl.info.plate == cell.info.plate && !cl.enable).length > 0) {
+                    const filter = cells.filter((cl) => cl.info.plate == cell.info.plate && !cl.enable)[0]
+
+                    setCell(filter)
+
+                    handleOpenModalEnd()
+                } else {
+                    setCell({ ...cell, type: (clients.filter((cli) => cli.plate == cell.info.plate)[0].vehicle) })
+
+                    handleOpenModal()
+                }
+            }
         }
     }
 
     useEffect(() => {
-        console.log(clientInfo);
         if (clientInfo != null && clientInfo.length > 0) {
             setCellsAvailable(cells.filter((c) => c.enable && c.type == cell.type))
         }
-
-        console.log(cellsAvailable);
     }, [cell.type, cell.info.plate])
 
     const [openModal, setOpenModal] = useState(false);
+    const [openModalEnd, setOpenModalEnd] = useState(false);
     const handleOpenModal = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
+    const handleOpenModalEnd = () => setOpenModalEnd(true);
+    const handleCloseModal = () => {
+        setOpenModal(false)
+        setOpenModalEnd(false)
+    };
 
     const handleCellId = (e) => {
         setCell({ ...cell, id: e.target.value })
@@ -174,12 +193,54 @@ const ParkingProvider = ({ children }) => {
     const park = () => {
         if (cell.id != null && cell.id > 0) {
             setCell({ ...cell, enable: false, info: { plate: clientInfo[0].plate, userId: clientInfo[0].id, startDate: new Date(), endDate: null } })
+
+            setCells(cells.map((cl) => cl.id == cell.id ? {
+                ...cl, enable: false, info: { plate: clientInfo[0].plate, userId: clientInfo[0].id, startDate: new Date(), endDate: null }
+            } : cl))
+
+            handleCloseModal()
+            setCell({
+                id: "",
+                type: null,
+                enable: true,
+                info: {
+                    userId: null,
+                    plate: "",
+                    startDate: null,
+                    endDate: null
+                }
+            })
         }
     }
 
-    useEffect(() => {
-        setCells([...cells, cell])
-    }, [cell.enable, cell.info.startDate])
+    const takeOut = () => {
+        if (cell.id != null && cell.id > 0) {
+            setTime(Math.round((new Date().getTime() - cell.info.startDate.getTime()) / (1000 * 60)))
+
+            setCells(cells.map((cl) => cl.id == cell.id ? {
+                ...cl, enable: true, info: { plate: null, userId: null, startDate: null, endDate: null }
+            } : cl))
+
+            handleCloseModal()
+
+            setSeverity("info")
+            setMessage(`${cell.type == "car" ? 'Carro' : 'Moto'} de placas ${cell.info.plate} retirada exitosamente con una duración de ${time} minutos`)
+
+            setCell({
+                id: "",
+                type: null,
+                enable: true,
+                info: {
+                    userId: null,
+                    plate: "",
+                    startDate: null,
+                    endDate: null
+                }
+            })
+
+            handleClick()
+        }
+    }
 
     return (
         <>
@@ -200,7 +261,7 @@ const ParkingProvider = ({ children }) => {
                         <br />
                         Placa: {(clientInfo.length > 0 && clientInfo[0].plate != "undefined") ? clientInfo[0].plate : ""}
                         <br />
-                        Tipo: {(clientInfo.length > 0 && clientInfo[0].type != "undefined") ? clientInfo[0].type == "car" ? "Carro" : "Moto" : ""}
+                        Tipo: {(clientInfo.length > 0 && clientInfo[0].type != "undefined") ? cell.type == "car" ? "Carro" : "Moto" : ""}
                     </Typography>
                     <hr />
 
@@ -216,6 +277,26 @@ const ParkingProvider = ({ children }) => {
                     </FormControl>
 
                     <Button type="button" fullWidth variant="contained" onClick={park} sx={{ mt: 2 }}>
+                        Guardar
+                    </Button>
+                </Box>
+            </Modal>
+
+            <Modal open={openModalEnd} onClose={handleCloseModal} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Información salida
+                    </Typography>
+
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Documento: {(clientInfo.length > 0 && clientInfo[0].document != "undefined") ? clientInfo[0].document : ""}
+                        <br />
+                        Placa: {(clientInfo.length > 0 && clientInfo[0].plate != "undefined") ? clientInfo[0].plate : ""}
+                        <br />
+                        Tipo: {(clientInfo.length > 0 && clientInfo[0].type != "undefined") ? cell.type == "car" ? "Carro" : "Moto" : ""}
+                    </Typography>
+
+                    <Button type="button" fullWidth variant="contained" onClick={takeOut} sx={{ mt: 2 }}>
                         Guardar
                     </Button>
                 </Box>

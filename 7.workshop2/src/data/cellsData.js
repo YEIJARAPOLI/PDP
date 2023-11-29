@@ -2,10 +2,10 @@ export const cellsData = [
     {
         id: 1,
         type: "car",
-        enable: false,
+        enable: true,
         info: {
             userId: null,
-            plate: "CFT567",
+            plate: null,
             startDate: null,
             endDate: null
         }
