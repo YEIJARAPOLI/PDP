@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Grid, Paper, Typography, Button } from "@mui/material"
+import { Grid, Paper, Typography } from "@mui/material"
 import { TwoWheeler, DriveEta } from '@mui/icons-material'
 
 const CellItem = ({ key, cell }) => {
